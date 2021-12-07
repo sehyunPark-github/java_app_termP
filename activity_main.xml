@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/subLayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_month"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B897F4"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/datePicker"
-        android:layout_width="161dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="serif"
-        android:onClick="@string/datePicker"
-        android:text="날짜 선택"
-        android:textSize="18sp"
-        app:icon="@android:drawable/ic_menu_my_calendar" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="384dp"
+            android:layout_height="55dp"
+            android:fontFamily="casual"
+            android:text="@string/dalimi"
+            android:textAlignment="viewEnd"
+            android:textColor="#F3F0F0"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/datePicker"
+            android:layout_width="161dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="serif"
+            android:onClick="@string/datePicker"
+            android:text="날짜 선택"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:icon="@android:drawable/ic_menu_my_calendar"
+            app:iconGravity="textStart" />
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/edit_dateLayout"
@@ -44,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
-                    android:text="이벤트날짜"
+                    android:text="@string/eventDay"
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -59,8 +79,8 @@
                 android:paddingTop="10dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="10dp"
-                android:text="2019년 2월 22일"
-                android:textSize="14dp" />
+                android:text="@string/_2021_1_1"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -105,7 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="serif"
-                    android:text="디데이"
+                    android:text="@string/d_day"
                     android:textAlignment="center"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -120,7 +140,7 @@
                 android:paddingTop="10dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="10dp"
-                android:text="0"
+                android:text="@string/zero"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -131,4 +151,46 @@
             android:background="#dedede" />
 
     </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="259dp"
+        android:background="#ECA7F8">
+
+        <LinearLayout
+            android:layout_width="319dp"
+            android:layout_height="167dp"
+            android:background="#FFFCFC"
+            android:orientation="vertical"
+            android:rotationX="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.575">
+
+            <TextView
+                android:id="@+id/edit_Month"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50sp"
+                android:text="@string/left_month"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/kau_logo" />
+
 </LinearLayout>

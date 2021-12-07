@@ -1,4 +1,4 @@
-package com.example.myfirstapp; //무슨뜻이지
+package com.example.myfirstapp;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -13,12 +13,7 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Locale;
 
-/**
- *@MainActivity
- *@brief 디데이 추가/수정/공유, 컬러설정, 사진/카메라 설정
- *@date 2016.02.18
- *@details
- */
+
 public class MainActivity extends Activity {
 
     int dateEndY, dateEndM, dateEndD;
@@ -28,10 +23,10 @@ public class MainActivity extends Activity {
     Calendar calendar;
     int currentYear, currentMonth, currentDay;
 
-    // 밀리세컨드형태의 하루(24 시간), 디데이계산하려면 밀리세컨드여야함
+    // 밀리세컨드형태의 24 시간, 디데이계산하려면 밀리세컨드여야함
     private final int ONE_DAY = 24 * 60 * 60 * 1000; //변경불가
 
-    TextView edit_endDateBtn, edit_result;
+    TextView edit_endDateBtn, edit_result, edit_Month;
     Button datePicker; //날짜선택버튼
 
     @Override //오버라이드
@@ -48,6 +43,7 @@ public class MainActivity extends Activity {
         datePicker = (Button) findViewById(R.id.datePicker);
         edit_endDateBtn = (TextView) findViewById(R.id.edit_endDateBtn); //입력날짜표시하는곳
         edit_result = (TextView) findViewById(R.id.edit_result); //디데이결과표시하는 곳
+        edit_Month = (TextView) findViewById(R.id.edit_Month); //디데이결과표시하는 곳
 
         //한국어 설정 (ex: date picker)
         Locale.setDefault(Locale.KOREAN);
@@ -78,6 +74,8 @@ public class MainActivity extends Activity {
             ddayValue = ddayResult_int(dateEndY, dateEndM, dateEndD);
 
             edit_result.setText(getDday(year, monthOfYear, dayOfMonth));
+            edit_Month.setText(getDMonth(year, monthOfYear, dayOfMonth));
+
         }
     };
 
@@ -112,6 +110,34 @@ public class MainActivity extends Activity {
         final String strCount = (String.format(strFormat, result));
 
         return strCount;
+    }
+
+    public String getDMonth (int mYear, int mMonthOfYear, int mDayOfMonth){
+        // D-day 설정
+        final Calendar ddayCalendar = Calendar.getInstance();
+        ddayCalendar.set(mYear, mMonthOfYear, mDayOfMonth);
+
+        // D-day 를 구하기 위해 millisecond 으로 환산하여 d-day 에서 today 의 차를 구한다.
+        final long dday = ddayCalendar.getTimeInMillis() / ONE_DAY; //(하루)의 밀리초수
+        final long today = Calendar.getInstance().getTimeInMillis() / ONE_DAY;
+        long result = dday - today;
+
+        // 출력 시 d-day 에 맞게 표시
+        String monthFormat; //@
+        if (result > 0) {
+            result /= 30;
+            monthFormat = "%d 달 남았습니다!";
+        } else if (result == 0) {
+            monthFormat = "오늘입니다";
+        } else {
+            result *= -1;
+            result /= 30;
+            monthFormat = "%d/30 달 지났습니다!";
+        }
+
+        final String monthCount = (String.format(monthFormat, result));
+
+        return monthCount;
     }
 
 

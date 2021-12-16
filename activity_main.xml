@@ -155,7 +155,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="259dp"
-        android:background="#ECA7F8">
+        android:background="#B897F4">
 
         <LinearLayout
             android:layout_width="319dp"
